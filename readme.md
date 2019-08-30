@@ -7,9 +7,9 @@ To quote patool's readme
 
 I wrote up some yara rules to interface with it for auto extraction and thought that it might be handy for someone.  
 
-##patool git
+## patool git
 [https://github.com/wummel/patool](https://github.com/wummel/patool)
-##patool site
+## patool site
 [http://wummel.github.io/patool/](http://wummel.github.io/patool)
 
 
