@@ -177,15 +177,6 @@ rule rzip
    condition:
       $a at 0
 }
-rule rzip
-{
-   meta:
-      desc = "rzip compressed file"
-   strings:
-      $a = { 52 5A 49 50 }
-   condition:
-      $a at 0
-}
 rule ape
 {
    meta:
@@ -201,15 +192,6 @@ rule ALZ
       desc = "ALZ compressed file"
    strings:
       $a = { 41 4C 5A }
-   condition:
-      $a at 0
-}
-rule AR
-{
-   meta:
-      desc = "AR *.a compressed file"
-   strings:
-      $a = { 21 3C 61 72 63 68 3e }
    condition:
       $a at 0
 }
