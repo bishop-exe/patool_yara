@@ -165,8 +165,9 @@ rule ARC
       desc = "FreeArc compressed file"
    strings:
       $a = { 41 72 43 01 }
+      $arc_old = { 1A (02 | 03 | 04 | 08 | 09) }
    condition:
-      $a at 0
+      $a at 0 or $arc_old at 0 
 }
 rule rzip
 {
@@ -200,7 +201,79 @@ rule AR
    meta:
       desc = "AR *.a compressed file"
    strings:
-      $a = { 21 3C 61 72 63 68 3e }
+      $a = { 21 3C 61 72 63 68 3E }
    condition:
       $a at 0
+}
+rule RPM
+{
+   meta:
+      desc = "RedHat Package Manager"
+   strings:
+      $a = { ED AB EE DB }
+   condition:
+      $a at 0
+}
+rule ISO
+{
+   meta:
+      desc = "ISO-9660 CD Disc Image"
+   strings:
+      $a = { 43 44 30 30 31 }
+   condition:
+      $a
+}
+rule ZOO
+{
+   meta:
+      desc = "ZOO compressed archive"
+   strings:
+      $a = { 5A 4F 4F 20 }
+   condition:
+      $a at 0
+}
+rule VHD
+{
+   meta:
+      desc = "	Virtual PC HD image"
+   strings:
+      $a = { 63 6F 6E 65 63 74 69 78 }
+   condition:
+      $a at 0
+}
+rule LZO
+{
+   meta:
+      desc = "LZO"
+   strings:
+      $a = { 4C 5A 4F }
+   condition:
+      $a  in (0..10)
+}
+rule LZIP
+{
+   meta:
+      desc = "LZIP"
+   strings:
+      $a = { 4C 5A 49 50 01}
+   condition:
+      $a  in (0..10)
+}
+rule LZMA
+{
+   meta:
+      desc = "LZIP"
+   strings:
+      $a = { 5d 00 00 80 00 ff ff ff ff ff ff ff ff 00 }
+   condition:
+      $a at 0
+}
+rule ACE
+{
+   meta:
+      desc = "ACE"
+   strings:
+      $a = { 2A 2A 41 43 45 2A 2A }
+   condition:
+      $a  in (0..10)
 }
